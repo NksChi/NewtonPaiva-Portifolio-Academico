@@ -1,0 +1,33 @@
+package br.com.newton.main;
+import br.com.newton.agenda.Contato;
+import javax.swing.JOptionPane;
+
+public class Telefone {
+    public static void main(String[] args) {
+        Contato contato1 = new Contato();
+
+        String nome = JOptionPane.showInputDialog("Digite o nome do contato:");
+        contato1.setNome(nome);
+
+        String ddd = JOptionPane.showInputDialog("Digite o ddd do contato:");
+        contato1.setDdd(ddd);
+
+        String telefone = JOptionPane.showInputDialog("Digite o número do contato:");
+        contato1.setTelefone(telefone);
+
+        if (contato1.getTelefone().length() != 9) {
+            JOptionPane.showMessageDialog(null, "Telefone inválido!");
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Contato adicionado!\n" +
+                    "Nome: " + nome + "\n" +
+                    "Telefone: (" + ddd + ")" + telefone);
+        }
+
+        String nomeE = JOptionPane.showInputDialog("Digite o contato para excluir:");
+        contato1.excluir(nomeE);
+
+        String add = JOptionPane.showInputDialog("Digite o contato para adicionar:");
+        contato1.add(add);
+    }
+}
