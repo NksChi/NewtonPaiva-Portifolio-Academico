@@ -27,11 +27,10 @@ O curso de **Sistemas de Informação** tem como objetivo formar profissionais c
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **Linguagens de Programação:** Python, Java, JavaScript, SQL.
-- **Frameworks e Bibliotecas:** React, Node.js, Django.
+- **Linguagens de Programação:** Java, JavaScript, SQL.
+- **Frameworks e Bibliotecas:** React, Node.js.
 - **Banco de Dados:** MySQL, PostgreSQL, MongoDB.
-- **Ferramentas de Desenvolvimento:** VSCode, Git, GitHub, Docker.
-- **Ferramentas de Gerenciamento de Projetos:** Trello, Jira.
+- **Ferramentas de Desenvolvimento:** VSCode, Git, GitHub.
 
 ## 💡 Como Contribuir
 
