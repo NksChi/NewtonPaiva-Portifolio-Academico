@@ -1,0 +1,92 @@
+# 1 Crie uma Função que : pesquise um nome que termine com a letra S na tabela
+Fornecedores
+DELIMITER //
+CREATE PROCEDURE buscar_fornecedores_com_s()
+BEGIN
+ SELECT *
+ FROM FORNECEDORES
+ WHERE nome LIKE '%S';
+END //
+DELIMITER ;
+CALL buscar_fornecedores_com_s();
+# 2 Crie uma Função que : Retire os seguintes caracteres do texto abaixo : * . - !
+# Ta*lvez v.ocê ain*da n.ão saiba o que é *SQL. Ma.s, -provavelm-ente, ente-nde
+que lidar com
+# o gerenciamento é super importante.
+# d-e da-dos t+em se to+rna.do um d!!esafio cada vez maior
+DELIMITER //
+CREATE FUNCTION remover_caracteres(texto VARCHAR(255))
+RETURNS VARCHAR(255)
+DETERMINISTIC
+BEGIN
+ SET texto = REPLACE(texto, '*', '');
+ SET texto = REPLACE(texto, '.', '');
+ SET texto = REPLACE(texto, '-', '');
+ SET texto = REPLACE(texto, '!', '');
+ SET texto = REPLACE(texto, '+', '');
+ RETURN texto;
+END //
+DELIMITER ;
+SELECT remover_caracteres('Ta*lvez v.ocê ain*da n.ão saiba o que é *SQL. Ma.s, -
+provavelm-ente, ente-nde que lidar com
+o gerenciamento é super importante. d-e da-dos t+em se to+rna.do um d!!esafio cada
+vez maior') AS texto_limpo;
+# 3 Crie uma Função que : Calcule a média de 3 valores
+DELIMITER //
+CREATE FUNCTION calcular_media(val1 DOUBLE, val2 DOUBLE, val3 DOUBLE)
+RETURNS DOUBLE
+DETERMINISTIC
+BEGIN
+ RETURN (val1 + val2 + val3) / 3;
+END //
+DELIMITER ;
+SELECT calcular_media(10, 20, 30) AS media;
+# 4 Crie uma Função que : Calcule a expressao : x+2(y-1)*5+x;
+DELIMITER //
+CREATE FUNCTION calcular_expressao(x DOUBLE, y DOUBLE)
+RETURNS DOUBLE
+DETERMINISTIC
+BEGIN
+ RETURN x + 2 * (y - 1) * 5 + x;
+END //
+DELIMITER ;
+SELECT calcular_expressao(3, 4) AS resultado;
+# 5 Crie uma Função que : apresente um texto com palavras escritas ao contrario.
+# precisam ser 3 palavras e todas devem ser palímdromos
+DELIMITER //
+CREATE FUNCTION inverter_palavras_palindromos(palavra1 VARCHAR(100), palavra2
+VARCHAR(100), palavra3 VARCHAR(100))
+RETURNS VARCHAR(300)
+DETERMINISTIC
+BEGIN
+ DECLARE resultado VARCHAR(300);
+ DECLARE inverso1 VARCHAR(100);
+ DECLARE inverso2 VARCHAR(100);
+ DECLARE inverso3 VARCHAR(100);
+
+ -- Inverter cada palavra
+ SET inverso1 = REVERSE(palavra1);
+ SET inverso2 = REVERSE(palavra2);
+ SET inverso3 = REVERSE(palavra3);
+
+ -- Verificar se as palavras são palíndromos
+ IF palavra1 = inverso1 AND palavra2 = inverso2 AND palavra3 = inverso3 THEN
+ SET resultado = CONCAT(inverso1, ' ', inverso2, ' ', inverso3);
+ ELSE
+ SET resultado = 'Nem todas as palavras são palíndromos.';
+ END IF;
+
+ RETURN resultado;
+END //
+DELIMITER ;
+SELECT inverter_palavras_palindromos('arara', 'radar', 'osso') AS resultado;
+# 6 Crie uma Função que : dê 5% de denconto em uma venda realizada.
+DELIMITER //
+CREATE FUNCTION aplicar_desconto(valor DOUBLE)
+RETURNS DOUBLE
+DETERMINISTIC
+BEGIN
+ RETURN valor * 0.95; -- 5% de desconto é multiplicar o valor por 95%
+END //
+DELIMITER ;
+SELECT aplicar_desconto(100) AS valor_com_desconto;
