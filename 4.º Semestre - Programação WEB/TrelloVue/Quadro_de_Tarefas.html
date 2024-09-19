@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="lOGO" href="Img/TrelloVue-Transparent.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gerenciador de Tarefas">
+  <meta name="keywords" content="tarefas, kanban, gerenciamento">
+  <title>TrelloVue</title>
+  <link rel="stylesheet" href="CSS/Quadro_de_Tarefas.css">
+</head>
+
+<body>
+  <!-- Cabeçalho (Header) -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="back-button">
+        <img src="Img/Esquerda.png" alt="Voltar">
+      </a>
+      <img src="Img/TrelloVue-Transparent.png" alt="TrelloVue" class="logo">
+    </nav>
+  </header>
+
+  <!-- Conteúdo Principal (Main) -->
+  <main>
+
+    <!-- Quadros de Tarefas (Boards) -->
+    <section class="boards">
+      <div class="board">
+        <h2>A FAZER</h2>
+        <div class="dropzone" id="todo" ondragover="dragOver(event)" ondrop="drop(event)">
+          <div class="card" draggable="true">
+            <div class="status todo"></div>
+            <div class="content">
+              Tarefa a fazer 1: Lorem ipsum dolor sit amet.
+            </div>
+          </div>
+          <div class="card" draggable="true">
+            <div class="status todo"></div>
+            <div class="content">
+              Tarefa a fazer 2: Consectetur adipiscing elit.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quadro "FAZENDO" -->
+      <div class="board">
+        <h2>FAZENDO</h2>
+        <div class="dropzone" id="doing" ondragover="dragOver(event)" ondrop="drop(event)">
+          <div class="card" draggable="true">
+            <div class="status doing"></div>
+            <div class="content">
+              Tarefa em andamento 1: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+          </div>
+          <div class="card" draggable="true">
+            <div class="status doing"></div>
+            <div class="content">
+              Tarefa em andamento 2: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+              ex ea commodo consequat.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quadro "REVISÃO" -->
+      <div class="board">
+        <h2>REVISÃO</h2>
+        <div class="dropzone" id="review" ondragover="dragOver(event)" ondrop="drop(event)">
+          <div class="card" draggable="true">
+            <div class="status review"></div>
+            <div class="content">
+              Tarefa em revisão 1: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+              fugiat nulla pariatur.
+            </div>
+          </div>
+          <div class="card" draggable="true">
+            <div class="status review"></div>
+            <div class="content">
+              Tarefa em revisão 2: Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+              mollit anim id est laborum.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quadro "CONCLUÍDO" -->
+      <div class="board">
+        <h2>CONCLUÍDO</h2>
+        <div class="dropzone" id="done" ondragover="dragOver(event)" ondrop="drop(event)">
+          <div class="card" draggable="true">
+            <div class="status done"></div>
+            <div class="content">
+              Tarefa concluída 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua.
+            </div>
+          </div>
+          <div class="card" draggable="true">
+            <div class="status done"></div>
+            <div class="content">
+              Tarefa concluída 2: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé (Footer) -->
+  <footer>
+    <div class="footers">
+
+      <!-- Adicionar Tarefa -->
+      <div class="task">
+        <h2><label for="task">ADD TAREFA</label></h2>
+        <form id="addTask" method="POST">
+          <input id="task" name="task" type="text" autocomplete="off" required>
+          <button type="submit"><img src="Img/Plus.png" alt="Add task"></button>
+        </form>
+      </div>
+
+      <!-- Lixeira (Trash) -->
+      <div class="trash">
+        <h2>Trash</h2>
+        <div class="dropZone" id="trash"></div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="Script.js" defer></script>
+
+</body>
+
+</html>
