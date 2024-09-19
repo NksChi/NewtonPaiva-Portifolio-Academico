@@ -1,0 +1,7 @@
+Leia as sentenças abaixo e assinale todas as VERDADEIRAS:
+(F) Métodos estáticos podem ser abstratos.
+(F) Construtores podem ser abstratos.
+(V) Classes abstratas podem ter construtores.
+(F) Métodos abstratos podem ser privativos.
+(V) Uma classe abstrata podem estender uma normal.
+(V) Posso ter uma classe abstrata sem nenhum método abstrato.

@@ -1,0 +1,16 @@
+Analise o código fonte abaixo, comente as classes e mostre o que irá aparecer na saída
+do main().
+
+Na classe EnvioConvite, ela é a classe Principal que contém o método main, reponsável pela criação de instâncias das classes ConvidarWhatsapp, 
+convidarEmail e Convite e imprime as informações na saída
+
+A classe convite representa um convite e possui dois atributos: destinatario e mensagem. Ela também tem um método mostrar que retorna uma string 
+com as informações do convite.
+
+A classe convidarWhatsapp estende a classe Convite e adiciona um atributo numeroTelefone para armazenar o número de telefone do destinatário. Além 
+disso, ela sobrescreve o método mostrar da classe Convite para incluir informações específicas para o envio por WhatsApp.
+
+A classe convidar e-mail estende a classe Convite e adiciona um atributo enderecoEmail para armazenar o endereço de email do destinatário. Além 
+disso, ela sobrescreve o método mostrar da classe Convite para incluir informações específicas para o envio por email.
+
+O que irá resultar do método main é que não ira compilar pois há um erro de execução.

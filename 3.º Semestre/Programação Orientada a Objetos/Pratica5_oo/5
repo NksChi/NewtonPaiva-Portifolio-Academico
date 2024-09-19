@@ -1,0 +1,29 @@
+O que será exibido pelo programa abaixo?
+public class A {
+public int i;
+void display() {
+System.out.println(i);
+}
+}
+public class B extends A {
+public int j;
+void display() {
+System.out.println(j);
+}
+}
+public class questaoPOO1 {
+public static void main(String[] args) {
+B obj = new B();
+obj.i=1;
+obj.j=2;
+obj.display();
+}
+}
+3
+a) 1.
+b) 2.
+c) 0.
+d) Nada, pois há um erro de execução.
+e) Nada, pois há um erro de compilação.
+
+R: B.

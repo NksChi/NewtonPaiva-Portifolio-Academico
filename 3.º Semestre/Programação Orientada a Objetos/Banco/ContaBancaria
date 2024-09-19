@@ -1,0 +1,11 @@
+package contabancaria;
+
+ public class ContaBancaria {
+    public static void main(String[] args) {
+    	Conta minhaConta = new Conta(1234,"Nicolas", 1000);
+    	minhaConta.deposita(500);
+    	System.out.println("Saldo da conta com deposito: " + minhaConta.getSaldo() );
+    	minhaConta.saca(100);
+    	System.out.println("Saldo Atual da conta: " + minhaConta.getSaldo() ); 	
+      }
+  }

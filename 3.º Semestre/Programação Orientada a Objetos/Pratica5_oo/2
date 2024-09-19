@@ -1,0 +1,12 @@
+Sobre as classes abstratas puras, assinale a alternativa correta:
+a) Uma classe abstrata é pura quando possui métodos abstratos; Não possui métodos
+concretos; e Não possui atributos (não-static).
+b) Uma classe abstrata é pura quando possui métodos abstratos e públicos; Pode possuir
+métodos concretos e abstratos; e Não possui atributos (não-static).
+c) Uma interface é uma classe abstrata pura; Pode possuir métodos concretos e abstratos.
+d) Uma interface é uma classe abstrata pura; Pode possuir métodos e atributos concretos e
+abstratos.
+e) Uma classe abstrata é pura quando possui métodos abstratos e públicos; É denominada
+Interface; Pode possuir métodos concretos e abstratos.
+
+R: A.

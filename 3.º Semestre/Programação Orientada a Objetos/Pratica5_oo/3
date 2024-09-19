@@ -1,0 +1,9 @@
+Suponha que você queira estabelecer uma relação de herança entre as classes A e B,
+onde A é superclasse de B. Deste modo, qual das alternativas abaixo É CORRETA?
+a) class B extends A {}
+b) class B inherits class A {}
+c) class B extends class A {}
+d) class B + class A {}
+e) class A extends class B {}
+
+R: A.
