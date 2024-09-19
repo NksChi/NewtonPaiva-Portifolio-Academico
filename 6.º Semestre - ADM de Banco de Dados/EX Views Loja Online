@@ -1,92 +1,187 @@
-# 1 Crie uma Função que : pesquise um nome que termine com a letra S na tabela
-Fornecedores
-DELIMITER //
-CREATE PROCEDURE buscar_fornecedores_com_s()
-BEGIN
- SELECT *
- FROM FORNECEDORES
- WHERE nome LIKE '%S';
-END //
-DELIMITER ;
-CALL buscar_fornecedores_com_s();
-# 2 Crie uma Função que : Retire os seguintes caracteres do texto abaixo : * . - !
-# Ta*lvez v.ocê ain*da n.ão saiba o que é *SQL. Ma.s, -provavelm-ente, ente-nde
-que lidar com
-# o gerenciamento é super importante.
-# d-e da-dos t+em se to+rna.do um d!!esafio cada vez maior
-DELIMITER //
-CREATE FUNCTION remover_caracteres(texto VARCHAR(255))
-RETURNS VARCHAR(255)
-DETERMINISTIC
-BEGIN
- SET texto = REPLACE(texto, '*', '');
- SET texto = REPLACE(texto, '.', '');
- SET texto = REPLACE(texto, '-', '');
- SET texto = REPLACE(texto, '!', '');
- SET texto = REPLACE(texto, '+', '');
- RETURN texto;
-END //
-DELIMITER ;
-SELECT remover_caracteres('Ta*lvez v.ocê ain*da n.ão saiba o que é *SQL. Ma.s, -
-provavelm-ente, ente-nde que lidar com
-o gerenciamento é super importante. d-e da-dos t+em se to+rna.do um d!!esafio cada
-vez maior') AS texto_limpo;
-# 3 Crie uma Função que : Calcule a média de 3 valores
-DELIMITER //
-CREATE FUNCTION calcular_media(val1 DOUBLE, val2 DOUBLE, val3 DOUBLE)
-RETURNS DOUBLE
-DETERMINISTIC
-BEGIN
- RETURN (val1 + val2 + val3) / 3;
-END //
-DELIMITER ;
-SELECT calcular_media(10, 20, 30) AS media;
-# 4 Crie uma Função que : Calcule a expressao : x+2(y-1)*5+x;
-DELIMITER //
-CREATE FUNCTION calcular_expressao(x DOUBLE, y DOUBLE)
-RETURNS DOUBLE
-DETERMINISTIC
-BEGIN
- RETURN x + 2 * (y - 1) * 5 + x;
-END //
-DELIMITER ;
-SELECT calcular_expressao(3, 4) AS resultado;
-# 5 Crie uma Função que : apresente um texto com palavras escritas ao contrario.
-# precisam ser 3 palavras e todas devem ser palímdromos
-DELIMITER //
-CREATE FUNCTION inverter_palavras_palindromos(palavra1 VARCHAR(100), palavra2
-VARCHAR(100), palavra3 VARCHAR(100))
-RETURNS VARCHAR(300)
-DETERMINISTIC
-BEGIN
- DECLARE resultado VARCHAR(300);
- DECLARE inverso1 VARCHAR(100);
- DECLARE inverso2 VARCHAR(100);
- DECLARE inverso3 VARCHAR(100);
+# 1 Crie uma view que apresente o total de pedidos do dia 2024-08-21
 
- -- Inverter cada palavra
- SET inverso1 = REVERSE(palavra1);
- SET inverso2 = REVERSE(palavra2);
- SET inverso3 = REVERSE(palavra3);
+CREATE VIEW TotalPedidos_2024_08_21 AS
+SELECT COUNT(P.idPedido) AS TotalPedidos
+FROM PEDIDOS P
+WHERE P.dataped = '2024-08-21';
 
- -- Verificar se as palavras são palíndromos
- IF palavra1 = inverso1 AND palavra2 = inverso2 AND palavra3 = inverso3 THEN
- SET resultado = CONCAT(inverso1, ' ', inverso2, ' ', inverso3);
- ELSE
- SET resultado = 'Nem todas as palavras são palíndromos.';
- END IF;
+# 2 Crie uma view que apresente o total de pedidos já realizados
 
- RETURN resultado;
-END //
-DELIMITER ;
-SELECT inverter_palavras_palindromos('arara', 'radar', 'osso') AS resultado;
-# 6 Crie uma Função que : dê 5% de denconto em uma venda realizada.
-DELIMITER //
-CREATE FUNCTION aplicar_desconto(valor DOUBLE)
-RETURNS DOUBLE
-DETERMINISTIC
-BEGIN
- RETURN valor * 0.95; -- 5% de desconto é multiplicar o valor por 95%
-END //
-DELIMITER ;
-SELECT aplicar_desconto(100) AS valor_com_desconto;
+CREATE VIEW TotalPedidosRealizados AS
+SELECT COUNT(P.idPedido) AS TotalPedidos
+FROM PEDIDOS P;
+
+# 3 Crie uma view que apresente o nome dos clientes que ja fizeram uma compra
+
+CREATE VIEW ClientesComCompra AS
+SELECT DISTINCT C.nome AS NomeCliente
+FROM CLIENTES C JOIN PEDIDOS P ON C.idCliente = P.fk_id_Cliente;
+
+# 4 Crie uma view que apresente os produtos que já foram comprados
+
+CREATE VIEW ProdutosComprados AS
+SELECT DISTINCT P.descricao AS NomeProduto,
+P.tipo AS TipoProduto
+FROM PRODUTOS P JOIN ITEMSPEDIDOS IP ON P.idProduto = IP.fk_id_Produto;
+
+# 5 Crie uma view que apresente quais produtos os clientes compraram
+
+CREATE VIEW ProdutosClientesComprados AS
+SELECT C.nome AS NomeCliente,
+P.descricao AS NomeProduto
+FROM CLIENTES C
+JOIN PEDIDOS PD ON C.idCliente = PD.fk_id_Cliente
+JOIN ITEMSPEDIDOS IP ON PD.idPedido = IP.fk_id_Pedido
+JOIN PRODUTOS P ON IP.fk_id_Produto = P.idProduto;
+
+# 6 Crie uma view que apresente o ticket media dos valores dos pedidos
+
+CREATE VIEW TicketMedioPedidos AS
+SELECT AVG(valorTotalPedido) AS TicketMedio
+FROM PEDIDOS;
+
+# 7 Crie uma view que apresente o lucro que rendeu um pedido qualquer
+
+CREATE VIEW LucroPorPedido AS
+SELECT PD.idPedido AS IDPedido,
+SUM((IP.quantidade * (P.precoVenda - P.precoCompra))) AS Lucro
+FROM PEDIDOS PD
+JOIN ITEMSPEDIDOS IP ON PD.idPedido = IP.fk_id_Pedido
+JOIN PRODUTOS P ON IP.fk_id_Produto = P.idProduto
+GROUP BY PD.idPedido;
+
+# 8 Crie uma view que apresente quantos pedidos já foram feitos
+
+CREATE VIEW QuantidadeTotalPedidos AS
+SELECT COUNT(idPedido) AS TotalPedidos
+FROM PEDIDOS;
+
+# 9 Crie uma view que apresente qual o maior pedido em valor
+
+CREATE VIEW MaiorPedidoPorValor AS
+SELECT idPedido AS IDPedido,
+valorTotalPedido AS ValorTotal
+FROM PEDIDOS
+ORDER BY valorTotalPedido DESC
+LIMIT 1;
+
+# 10 Crie uma view que apresente qual o menor pedido em valor
+
+CREATE VIEW MenorPedidoPorValor AS
+SELECT idPedido AS IDPedido,
+valorTotalPedido AS ValorTotal
+FROM PEDIDOS
+ORDER BY valorTotalPedido ASC
+LIMIT 1;
+
+# 11 Crie uma view que apresente qual o endereco do cliente Teclaudio
+
+CREATE VIEW EnderecoClienteTeclaudio AS
+SELECT C.nome AS NomeCliente,
+E.Logradouro,
+E.numero,
+E.complemento,
+E.cep,
+E.bairro,
+E.cidade,
+E.estado
+FROM CLIENTES C
+JOIN ENDERECOS E ON C.fk_id_endereco = E.idEndereco
+WHERE C.nome = 'Tecláudio Screen';
+
+# 12 Crie uma view que apresente qual endereco dos clientes que ja fizeram compras
+
+CREATE VIEW EnderecoClientesComCompras AS
+SELECT C.nome AS NomeCliente,
+E.Logradouro,
+E.numero,
+E.complemento,
+E.cep,
+E.bairro,
+E.cidade,
+E.estado
+FROM CLIENTES C
+JOIN PEDIDOS P ON C.idCliente = P.fk_id_Cliente
+JOIN ENDERECOS E ON C.fk_id_endereco = E.idEndereco
+GROUP BY C.nome, E.Logradouro, E.numero, E.complemento, E.cep, E.bairro, E.cidade,
+E.estado;
+
+# 13 Crie uma view que apresente quais pedidos foram pagos em pix
+
+CREATE VIEW PedidosPagosEmPix AS
+SELECT PD.idPedido AS IDPedido,
+PD.valorTotalPedido AS ValorTotal,
+C.nome AS NomeCliente
+FROM PEDIDOS PD
+JOIN PAGAMENTOS PA ON PD.fk_id_pagamento = PA.idPagamento
+JOIN CLIENTES C ON PD.fk_id_Cliente = C.idCliente
+WHERE PA.forma_pagamento = 'PIX';
+
+# 14 Crie uma view que apresente quais pedidos foram pagos em cartao
+
+CREATE VIEW PedidosPagosEmCartao AS
+SELECT PD.idPedido AS IDPedido,
+PD.valorTotalPedido AS ValorTotal,
+C.nome AS NomeCliente
+FROM PEDIDOS PD
+JOIN PAGAMENTOS PA ON PD.fk_id_pagamento = PA.idPagamento
+JOIN CLIENTES C ON PD.fk_id_Cliente = C.idCliente
+WHERE PA.forma_pagamento = 'Cartão';
+
+# 15 Crie uma view que apresente quais itens foram pedidos no pedido do Marta Castro
+
+CREATE VIEW ItensPedidoMarta AS
+SELECT IP.idiItemPedido AS IDItemPedido,
+P.descricao AS NomeProduto,
+IP.quantidade AS Quantidade,
+P.precoVenda AS PrecoVenda,
+(IP.quantidade * P.precoVenda) AS ValorTotal
+FROM PEDIDOS PD
+JOIN CLIENTES C ON PD.fk_id_Cliente = C.idCliente
+JOIN ITEMSPEDIDOS IP ON PD.idPedido = IP.fk_id_Pedido
+JOIN PRODUTOS P ON IP.fk_id_Produto = P.idProduto
+WHERE C.nome = 'Marta Castro';
+
+# 16 Crie uma view que apresente qual fornecedor fabricou os produtos do pedido da Helena Carla
+
+CREATE VIEW FornecedoresProdutosPedidoHelena AS
+SELECT P.descricao AS NomeProduto,
+F.nome AS NomeFornecedor,
+F.cnpj AS CNPJFornecedor
+FROM PEDIDOS PD
+JOIN CLIENTES C ON PD.fk_id_Cliente = C.idCliente
+JOIN ITEMSPEDIDOS IP ON PD.idPedido = IP.fk_id_Pedido
+JOIN PRODUTOS P ON IP.fk_id_Produto = P.idProduto
+JOIN FORNECEDORES F ON P.fk_id_fornecedor = F.idFornecedor
+WHERE C.nome = 'Helena Carla';
+
+# 17 Crie uma view que apresente qual fornecedor fabrica as Camisas comercializadas
+
+CREATE VIEW FornecedoresCamisas AS
+SELECT P.descricao AS DescricaoCamisa,
+F.nome AS NomeFornecedor,
+F.cnpj AS CNPJFornecedor
+FROM PRODUTOS P
+JOIN FORNECEDORES F ON P.fk_id_fornecedor = F.idFornecedor
+WHERE P.tipo = 'Camisa';
+
+# 18 Crie uma view que apresente qual a quantidade em estoque do produto comprado pela Maria de Almeida
+
+CREATE VIEW QuantidadeEstoqueProdutoMariaDeAlmeida AS
+SELECT P.descricao AS NomeProduto,
+P.estoque AS QuantidadeEmEstoque
+FROM PEDIDOS PD
+JOIN CLIENTES C ON PD.fk_id_Cliente = C.idCliente
+JOIN ITEMSPEDIDOS IP ON PD.idPedido = IP.fk_id_Pedido
+JOIN PRODUTOS P ON IP.fk_id_Produto = P.idProduto
+WHERE C.nome = 'Maria de Almeida';
+
+# 19 Crie uma view que apresente o total de produtos fabricados pela Marte Roupas
+
+CREATE VIEW TotalProdutosMarteRoupas AS
+SELECT F.nome AS NomeFornecedor,
+COUNT(P.idProduto) AS TotalProdutos
+FROM PRODUTOS P
+JOIN FORNECEDORES F ON P.fk_id_fornecedor = F.idFornecedor
+WHERE F.nome = 'Marte Roupas'
+GROUP BY F.nome;
