@@ -33,10 +33,6 @@ O curso de **Sistemas de Informação** tem como objetivo formar profissionais c
 - **Ferramentas de Desenvolvimento:** VSCode, Git, GitHub, Docker.
 - **Ferramentas de Gerenciamento de Projetos:** Trello, Jira.
 
-## 📂 Estrutura do Repositório
-
-NewtonPaiva/ │ ├── 1º Semestre/ │ ├── Algoritmos/ │ ├── Fundamentos de Sistemas de Informação/ │ └── ... │ ├── 2º Semestre/ │ ├── Arquitetura de Computadores/ │ ├── Análise de Sistemas/ │ └── ... │ ├── 3º Semestre/ │ ├── Estrutura de Dados/ │ ├── Modelagem de Processos de Negócio/ │ └── ... │ └── Último Semestre/ ├── Interação Humano-Computador/ ├── Usina de Projetos Experimentais (UPx) - TI 6/ └── ...
-
 ## 💡 Como Contribuir
 
 Este repositório é de uso pessoal, mas sinta-se à vontade para explorar os projetos e enviar sugestões ou feedbacks através de issues ou pull requests.
