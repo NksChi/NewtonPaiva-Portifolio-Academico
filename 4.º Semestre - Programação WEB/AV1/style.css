@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.navbar {
+  background-color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.logo img {
+  height: 60px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li {
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.search button {
+  background-color: transparent;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.sobre {
+  display: flex;
+  justify-content: center;
+}
+
+.sobre-content {
+  display: flex;
+  align-items: center;
+  width: 500px;
+}
+
+.sobre-content img {
+  max-width: 300px;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.sobre-texto {
+  flex: 1;
+}
+
+.trabalhos {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.categoria-trabalho {
+  width: 480px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.categoria-trabalho img {
+  display: flex;
+  width: 100px;
+}
+
+.recommendations {
+  display: flex;
+  background-color: #f9f9f9;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.recommendations h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.recommendation {
+  margin: 0 auto;
+  max-width: 400px;
+  text-align: left;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.recommendation img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.recommendation p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.recommendation cite {
+  font-style: italic;
+  font-size: 14px;
+  color: #888;
+}
+
+.client-logos {
+  background-color: #888;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.client-logos h2 {
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.client-logos img {
+  max-width: 150px;
+  height: auto;
+  margin: 0 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.contato {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.contato h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form-container {
+  border: 1px solid #333;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.grupo {
+  margin-bottom: 20px;
+}
+
+.grupo label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.grupo input[type="text"],
+.grupo input[type="email"],
+.grupo textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.grupo textarea {
+  resize: vertical;
+}
+
+button[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+button[type="submit"]:hover {
+  background-color: #555;
+}
