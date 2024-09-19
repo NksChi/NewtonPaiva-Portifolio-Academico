@@ -1,0 +1,26 @@
+1- Quais são os tipos de linguagem de programação? Fale sobre elas e cite exemplos de utilização.
+
+R- Existem 2 tipos de linguagem, a de baixo nível e de alto nível. Sobre a linguagem de
+baixo nível podemos dizer que ela é a linguagem da máquina, a linguagem que utilizamos
+mais próxima é a Assembly, que lemos o código binário que a máquina utiliza.
+Sobre a linguagem de alto nível, elas são para facilitar a vida do programador pois são mais
+fáceis de ser entendidas por nós, dentro dela temos diversas línguas como Java, Cobol, C,
+etc.
+
+2- Ao programar um código em linguagem em baixo nível poderíamos usar um
+compilador? Justifique sua resposta.
+
+R- Não, pois ela trabalha diretamente na máquina em seu hardware e software.
+
+3- Um amigo programador conhece muito sobre hardware e gostaria de explorar
+ainda mais placas e memórias. Qual linguagem de programação você indicaria para ele trabalhar?
+
+R- Assembly.
+
+4- Quem criou o primeiro programa de computador?
+
+R- Foi a Ada Lovelace.
+
+5- Quais são os paradigmas de programação?
+
+R- São 4 paradigmas: Imperativo ou procedural, funcional, lógico e orientação a objetos.
